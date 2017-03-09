@@ -26,6 +26,15 @@ button, input, select, textarea { font-size:100%; }
 .myActive{
     background-color: #2e3346;
 }
+.active_bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    width: 4px;
+    background-color: #60a1af;
+    box-shadow: 3px 0px 15px 2px #090b15;;
+}
 /*顶部begin*/
 html{
     width: 100%;
@@ -135,6 +144,11 @@ input::-webkit-input-placeholder{
     margin-left: 10px;
     border-radius: 50%;
     background-color: #fff;
+    overflow: hidden;
+}
+.right_h_user_head img{
+    width: 36px;
+    height: 36px;
 }
 .right_h_user_menubtn{
     width: 0px;
@@ -205,6 +219,7 @@ input::-webkit-input-placeholder{
 .sider_menu ul li{
     height: 45px;
     position: relative;
+    overflow: hidden;
 }
 .sider_menu ul li:hover{
     cursor: pointer;
@@ -225,56 +240,57 @@ input::-webkit-input-placeholder{
     background: url(imgs/icon1.png) no-repeat 0 10px;
 }
 .menu1:hover .icon1{
-    background: url(imgs/icon1_1.png) no-repeat 0 10px;
+    background: url(imgs/icon1_active.png) no-repeat 0 10px;
 }
 .icon2{
     background: url(imgs/icon2.png) no-repeat 0 10px;
 }
-.menu2:hover .icon2{
-    background: url(imgs/icon2_1.png) no-repeat 0 10px;
+.menu2:active .icon2{
+    background: url(imgs/icon2_active.png) no-repeat 0 10px;
 }
 .icon3{
     background: url(imgs/icon3.png) no-repeat 0 10px;
 }
 .menu3:hover .icon3{
-    background: url(imgs/icon3_1.png) no-repeat 0 10px;
+    background: url(imgs/icon3_active.png) no-repeat 0 10px;
 }
 .icon4{
     background: url(imgs/icon4.png) no-repeat 0 10px;
 }
 .menu4:hover .icon4{
-    background: url(imgs/icon4_1.png) no-repeat 0 10px;
+    background: url(imgs/icon4_active.png) no-repeat 0 10px;
 }
 .icon5{
     background: url(imgs/icon5.png) no-repeat 0 10px;
 }
 .menu5:hover .icon5{
-    background: url(imgs/icon5_1.png) no-repeat 0 10px;
+    background: url(imgs/icon5_active.png) no-repeat 0 10px;
 }
 .icon6{
     background: url(imgs/icon6.png) no-repeat 0 10px;
 }
 .menu6:hover .icon6{
-    background: url(imgs/icon6_1.png) no-repeat 0 10px;
+    background: url(imgs/icon6_active.png) no-repeat 0 10px;
 }
 .icon7{
     background: url(imgs/icon7.png) no-repeat 0 10px;
 }
 .menu7:hover .icon7{
-    background: url(imgs/icon7_1.png) no-repeat 0 10px;
+    background: url(imgs/icon7_active.png) no-repeat 0 10px;
 }
 .icon8{
     background: url(imgs/icon8.png) no-repeat 0 10px;
 }
 .menu8:hover .icon8{
-    background: url(imgs/icon8_1.png) no-repeat 0 10px;
+    background: url(imgs/icon8_active.png) no-repeat 0 10px;
 }
 .icon9{
     background: url(imgs/icon9.png) no-repeat 0 10px;
 }
 .menu9:hover .icon9{
-    background: url(imgs/icon9_1.png) no-repeat 0 10px;
+    background: url(imgs/icon9_active.png) no-repeat 0 10px;
 }
+
 .menu_title{
     position: absolute;
     top: 0;
@@ -361,6 +377,24 @@ input::-webkit-input-placeholder{
     border-width: 0;
     border-radius: 5px;
 }
+.copyright{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+.copyright p{
+    color: #fff;
+    font-size: 12px;
+}
+.copyright::before{
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+}
 /*侧边栏end*/
 
 /*内容区域*/
@@ -371,6 +405,9 @@ input::-webkit-input-placeholder{
     top: 64px;
     left: 75px;
 }
+.container h1{
+    margin: 200px;
+}
 .chn_list{
     position: relative;
     top: 0;
@@ -378,7 +415,8 @@ input::-webkit-input-placeholder{
     width: 200px;
     height: 100%;
     background-color: #2e3346;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .chn_head{
     height: 40px;
@@ -433,9 +471,4 @@ input::-webkit-input-placeholder{
 {  
     -webkit-box-shadow: 0 0 6px rgba(0,0,0,.3);  
     background-color: #3b4363;  
-}
-#remind{
-    position: fixed;
-    top: 54px;
-    right: 45px;
 }

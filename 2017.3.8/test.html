@@ -6,19 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-    
+        li:hover{
+            background-color: #ccc;
+        }
+        a:active{
+            background-color: #ccc;
+        }
     </style>
 </head>
 <body>
-    <div id="div">
-        
-    </div>
+    <ul>
+        <li><a href="#">123</a></li>
+        <li>123</li>
+        <li>123</li>
+        <li>213</li>
+        <li>213</li>
+    </ul>
     <script src="jquery-3.1.1.js">
     </script>
     <script>
-        $('div').append('<ul><li>hahaha<li></ul>')
-        var str = "hahahahaah"
-        $('#div').append(str);
+        function toggleBg($obj){
+            var bgUrl = $obj.find('.icon').css('background-image');
+            if(bgUrl.indexOf('active') === -1){
+                bgUrl = bgUrl.substring(0,bgUrl.indexOf('.')) + '.png';
+            }else{
+                bgUrl = bgUrl.substring(0,bgUrl.indexOf('_')) + '_active.png';
+            }
+            return bgUrl;
+        }
+        togg
     </script>
 </body>
 </html>
