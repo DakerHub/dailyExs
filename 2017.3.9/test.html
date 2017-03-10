@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/homed.kernel.css">
+    <link rel="stylesheet" href="css/tlayer.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btn-container">
+        
+    </div>
+    <script src="../lib/jquery-3.1.1.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/dnsConfig.js"></script>
+    <script src="js/homed.kernel.js"></script>
+    <script>
+        // http://dtv.homed.me:12890/media/series/get_list?accesstoken=TOKEN3124&label=0&sortby=2&asc=0&pageidx=1&pagenum=50
+        var CONFIG = {
+            // Homed 后台登录地址
+            loginurl: "http://boss.homed.me/login.html",
+            // 系统 id
+            systemid: 2,
+            // 系统名称
+            systemname: "视频上传后台系统",
+            // 是否为开发模式，默认为 true ; true 为不用登录即可进入系统，否则必须登录
+            dev: true,
+            // 开发模式下的默认账户 ID
+            userid: "3090",
+            // 开发模式下的默认令牌 
+            token: "TOKEN3090",
+            // 开发模式下的默认用户角色: 1.超级管理员，2.系统管理员，3.普通用户
+            role: 2,
+        };
+        // 保存 CONFIG 信息到 kernel 中
+        iHomed( "config", CONFIG );
+
+
+
+        /**
+         * ajax包装代码测试
+         */
+        iHomed( "api", {
+            get_api: "http://dtv.homed.me:12890/media/series/get_list"
+        });
+        iHomed("getData",{
+            url: "get_api",
+            type: "GET",
+            data: {
+                accesstoken : iHomed( "config", "token" ),
+                label       : "0",
+                sortby      : 3,
+                asc         : 0,
+                pageidx     : 1,
+                pagenum     : 50
+            },
+            success: function ( data ) {
+                console.log(data);
+            },
+            error: function(){}
+        });
+        
+
+
+        /**
+         * 按钮配置测试
+         */
+        var btns = [{
+            type: "button",
+            text: "按钮1",
+            toolID: "btn1",
+            disabled: false,
+            map: {
+                btn1: {
+                    action: function(){
+                        alert(111);
+                    },
+                    iconClass: {
+                        normal: "btn1Normal",
+                        hover: "btn1Hover",
+                        disabled: "ben1Dis" 
+                    } 
+                }
+            }
+        }]
+        $('#btn-container').iHomed("initTools",btns);
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹出框tLayer测试</title>
+    <link rel="stylesheet" href="http://boss.homed.me/pubFile/plugins/jquery-ui/jquery-ui.min.css" />
+    <link rel="stylesheet" href="tlayer.css" />
+    <script type="text/javascript" src="http://boss.homed.me/pubFile/commjs/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="http://boss.homed.me/pubFile/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery.tlayer.js"></script>
+</head>
+<body>
+    <h1>tLayer 弹出框测试</h1>
+    <button id="msg">msg测试</button>
+    <button id="alert">alert测试</button>
+    <button id="loading">loading测试</button>
+    <button id="confirm">confirm测试</button>
+    <button id="content">content测试</button>
+    <button id="custom">custom测试</button>
+    <button id="showcustom" style="display:none">显示custom测试</button>
+    <!-- <iframe id="marinFrame" src="tlayer.html"></iframe> -->
+    <script type="text/javascript">
+        // msg弹窗演示
+        $("#msg").bind("click", function () {
+            $.msg({
+                zIndex:1099,
+                content:{
+                    html:"msg", 
+                    icon: ""
+                }
+            });
+        });
+        // alert弹窗演示
+        $("#alert").bind("click", function () {
+            $.alert("alert");
+            $.alert({
+                zIndex: 1099,
+                content: {
+                    html: "带回调的alert"
+                },
+                footer: {
+                    buttons: [{
+                        callback: function () {
+                            $.msg("这是回调");
+                        }
+                    }]
+                }
+            });
+        });
+
+        // loading弹窗演示
+        $("#loading").bind("click", function () {
+            var $loading = $.loading("我会在3秒后消失哦！");
+            setTimeout(function () {
+                // 关闭弹窗
+                tLayer("close", $loading.attr("id"));
+            }, 3000);
+        });
+
+        // confirm弹窗演示
+        $("#confirm").bind("click", function () {
+            $.confirm({
+                content: {
+                    html: "confirm？"
+                },
+                footer: {
+                    buttons: [{
+                        callback: function () {
+                            $.msg("confirm的回调");
+                        }
+                    }]
+                }
+            });
+        });
+        
+        // content弹窗演示
+        $("#content").bind("click", function () {
+           $.content({
+                width: "960px",
+                height: "600px",
+                header: {
+                    text: "百度"
+                },
+                content: {
+                    src: "http://www.baidu.com"
+                },
+                footer: {
+                    buttons: [{
+                        buttonID: "sure",
+                        buttonText: "确定",
+                        callback: function () {
+                            $.msg("确定");
+
+
+                        }
+                    }, {
+                        buttonID: "cancel",
+                        buttonText: "取消",
+                        callback: function (layerID) {
+                            // 关闭当前content弹窗
+                            $.tLayer("close", layerID);
+                        }
+                    }]
+                }
+            });
+        });
+
+        // custom弹窗的ID
+        var customID = null,
+            $showcustom = $("#showcustom");
+
+        // custom弹窗演示
+        $("#custom").bind("click", function () {
+            $showcustom.show();
+            $.custom({
+                width: "400px",
+                height: "500px",
+                context: top.document,
+                // bindEsc: true,// 绑定按Esc退出弹窗事件
+                header: {
+                    height: "",
+                    text: "上传文件",
+                    buttons     : [{
+                        width       : "30px",
+                        buttonID    : "layer-cancel",
+                        buttonText  : "关闭",
+                        callback    : function (layerID) {
+                            $.tLayer("close", layerID);
+                            $showcustom.hide();
+                        }
+                    }]
+                },
+                content: {
+                    height: "435px",
+                    src: "../uploadfive/uploadfive.html"
+                },
+                footer: {
+                    buttons: [{
+                        buttonID: "hide",
+                        buttonText: "隐藏",
+                        callback: function (layerID) {
+                            // 隐藏当前content弹窗
+                            $.tLayer("hide", layerID);
+                            customID = layerID;
+                            $showcustom.show();
+                        }
+                    }]
+                }
+            });
+        });
+        
+        $showcustom.bind("click", function () {
+            tLayer("show", customID);
+        });
+
+    </script>
+</body>
+</html>

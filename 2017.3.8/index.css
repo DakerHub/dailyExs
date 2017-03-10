@@ -244,58 +244,30 @@ input::-webkit-input-placeholder{
 .icon1{
     background: url(imgs/icon1.png) no-repeat 0 10px;
 }
-.menu1:hover .icon1{
-    background: url(imgs/icon1_active.png) no-repeat 0 10px;
-}
 .icon2{
     background: url(imgs/icon2.png) no-repeat 0 10px;
-}
-.menu2:active .icon2{
-    background: url(imgs/icon2_active.png) no-repeat 0 10px;
 }
 .icon3{
     background: url(imgs/icon3.png) no-repeat 0 10px;
 }
-.menu3:hover .icon3{
-    background: url(imgs/icon3_active.png) no-repeat 0 10px;
-}
 .icon4{
     background: url(imgs/icon4.png) no-repeat 0 10px;
-}
-.menu4:hover .icon4{
-    background: url(imgs/icon4_active.png) no-repeat 0 10px;
 }
 .icon5{
     background: url(imgs/icon5.png) no-repeat 0 10px;
 }
-.menu5:hover .icon5{
-    background: url(imgs/icon5_active.png) no-repeat 0 10px;
-}
 .icon6{
     background: url(imgs/icon6.png) no-repeat 0 10px;
-}
-.menu6:hover .icon6{
-    background: url(imgs/icon6_active.png) no-repeat 0 10px;
 }
 .icon7{
     background: url(imgs/icon7.png) no-repeat 0 10px;
 }
-.menu7:hover .icon7{
-    background: url(imgs/icon7_active.png) no-repeat 0 10px;
-}
 .icon8{
     background: url(imgs/icon8.png) no-repeat 0 10px;
-}
-.menu8:hover .icon8{
-    background: url(imgs/icon8_active.png) no-repeat 0 10px;
 }
 .icon9{
     background: url(imgs/icon9.png) no-repeat 0 10px;
 }
-.menu9:hover .icon9{
-    background: url(imgs/icon9_active.png) no-repeat 0 10px;
-}
-
 .menu_title{
     position: absolute;
     top: 0;
