@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/homed.kernel.css">
     <link rel="stylesheet" href="css/tlayer.css">
+    <style>
+        .btn1Normal {
+            background-image: url(imgs/checkbox.png);
+        }
+    </style>
     <title>Document</title>
 </head>
+
 <body>
     <div id="btn-container">
-        
+
     </div>
     <script src="../lib/jquery-3.1.1.js"></script>
     <script src="js/jquery.cookie.js"></script>
@@ -35,57 +42,145 @@
             role: 2,
         };
         // 保存 CONFIG 信息到 kernel 中
-        iHomed( "config", CONFIG );
+        iHomed("config", CONFIG);
 
 
 
         /**
          * ajax包装代码测试
          */
-        iHomed( "api", {
+        iHomed("api", {
             get_api: "http://dtv.homed.me:12890/media/series/get_list"
         });
-        iHomed("getData",{
+        iHomed("getData", {
             url: "get_api",
             type: "GET",
             data: {
-                accesstoken : iHomed( "config", "token" ),
-                label       : "0",
-                sortby      : 3,
-                asc         : 0,
-                pageidx     : 1,
-                pagenum     : 50
+                accesstoken: iHomed("config", "token"),
+                label: "0",
+                sortby: 3,
+                asc: 0,
+                pageidx: 1,
+                pagenum: 50
             },
-            success: function ( data ) {
+            success: function (data) {
                 console.log(data);
             },
-            error: function(){}
+            error: function () {}
         });
-        
+
 
 
         /**
          * 按钮配置测试
          */
-        var btns = [{
+        // var btns = [{
+        //     type: "button",
+        //     text: "按钮1",
+        //     toolID: "tool-button1",
+
+        //     map: {
+        //         "tool-button1": {
+        //             action: function () {
+        //                 alert("点击了按钮1");
+        //             },
+        //             iconClass: {
+        //                 normal: "btn1Normal",
+        //                 hover: "btn1Hover",
+        //                 disabled: "btn1Disabled"
+        //             }
+        //         }
+        //     }
+        // },
+        // {
+        //     type: "button",
+        //     text: "按钮1",
+        //     toolID: "tool-button1",
+
+        //     map: {
+        //         "tool-button1": {
+        //             action: function () {
+        //                 alert("点击了按钮1");
+        //             },
+        //             iconClass: {
+        //                 normal: "btn1Normal",
+        //                 hover: "btn1Hover",
+        //                 disabled: "btn1Disabled"
+        //             }
+        //         }
+        //     }
+        // },
+        // {
+        //     type: "button",
+        //     text: "按钮1",
+        //     toolID: "tool-button1",
+
+        //     map: {
+        //         "tool-button1": {
+        //             action: function () {
+        //                 alert("点击了按钮1");
+        //             },
+        //             iconClass: {
+        //                 normal: "btn1Normal",
+        //                 hover: "btn1Hover",
+        //                 disabled: "btn1Disabled"
+        //             }
+        //         }
+        //     }
+        // }];
+        var tools = [{
             type: "button",
             text: "按钮1",
-            toolID: "btn1",
-            disabled: false,
+            toolID: "tool-button1",
             map: {
-                btn1: {
-                    action: function(){
-                        alert(111);
+                "tool-button1": {
+                    action: function () {
+                        alert("点击了按钮1");
                     },
                     iconClass: {
                         normal: "btn1Normal",
                         hover: "btn1Hover",
-                        disabled: "ben1Dis" 
-                    } 
+                        disabled: "btn1Disabled"
+                    }
                 }
             }
-        }]
-        $('#btn-container').iHomed("initTools",btns);
+        },
+        {
+            type: "button",
+            text: "按钮1",
+            toolID: "tool-button1",
+            map: {
+                "tool-button1": {
+                    action: function () {
+                        alert("点击了按钮1");
+                    },
+                    iconClass: {
+                        normal: "btn1Normal",
+                        hover: "btn1Hover",
+                        disabled: "btn1Disabled"
+                    }
+                }
+            }
+        },
+        {
+            type: "button",
+            text: "按钮1",
+            toolID: "tool-button1",
+            map: {
+                "tool-button2": {
+                    action: function () {
+                        alert("点击了按钮1");
+                    },
+                    iconClass: {
+                        normal: "btn1Normal",
+                        hover: "btn1Hover",
+                        disabled: "btn1Disabled"
+                    }
+                }
+            }
+        }];
+        $('#btn-container').iHomed("initTools", tools);
     </script>
 </body>
+
 </html>

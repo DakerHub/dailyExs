@@ -1,0 +1,115 @@
+/*初始化*/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; } 
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; font-family: "Microsoft YaHei"} 
+h1, h2, h3, h4, h5, h6{ font-size:100%; } 
+ul, ol { list-style:none; } 
+a { text-decoration:none;color: #000;} 
+a:hover { text-decoration:underline;} 
+img { border:0; } 
+button, input, select, textarea { font-size:100%; }
+
+.checkbox{
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    visibility: hidden;
+}
+label{
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url(../imgs/checkbox.png) no-repeat;
+}
+.checkbox:checked + label{
+    background: url(../imgs/checkbox.png) no-repeat 0 -27px;
+}
+
+/*table样式*/
+table{
+    font-size: 14px;
+    width: 100%;
+    margin: auto;
+    border: thin solid #ccc;
+    border-collapse: collapse;
+}
+thead td{
+    background-color: #f7f7f7;
+    height: 30px;
+}
+table td{
+    padding: 5px 10px;
+    text-align: left;
+    border-top: thin solid #ccc;
+    border-bottom: thin solid #ccc;
+
+}
+tbody tr:hover{
+    background-color: #e2eff5; 
+}
+.table_container{
+    width:80%;
+    margin-left: 10%;
+    text-align: center;
+}
+#page_nav{
+    margin-top: 10px;
+    border-top: thin solid #ccc;
+    text-align: center;
+}
+/*按钮的预定样式*/
+.tools .tool-text{
+    display: none;
+}
+.tools .tool-image{
+    height: 38px;
+}
+.btn1Normal{
+    background: url(../imgs/upload-tools.png) no-repeat -22px 12px;
+}
+.btn1Disabled{
+    background: url(../imgs/upload-tools.png) no-repeat -22px -56px;
+}
+.btn2Normal{
+    background: url(../imgs/upload-tools.png) no-repeat 16px 12px;
+}
+.btn2Disabled{
+    background: url(../imgs/upload-tools.png) no-repeat 16px -56px;
+}
+.btn3Normal{
+    background: url(../imgs/upload-tools.png) no-repeat -247px 12px;
+}
+.btn3Disabled{
+    background: url(../imgs/upload-tools.png) no-repeat -247px -56px;
+}
+.btn4Normal{
+    background: url(../imgs/upload-tools.png) no-repeat -160px 12px;
+}
+.btn4Disabled{
+    background: url(../imgs/upload-tools.png) no-repeat -160px -56px;
+}
+/*顶部按钮样式*/
+.fun-btn{
+    width: 100%;
+}
+.edit-btn{
+    float: left;
+}
+.sort-btn{
+    float: right;
+}
+.updataNomal{
+    background: url(../imgs/upload-tools.png) no-repeat 16px 12px;
+}
+.updataDisabled{
+    background: url(../imgs/upload-tools.png) no-repeat 16px -56px;
+}
+.deleteNomal{
+    background: url(../imgs/upload-tools.png) no-repeat -120px 12px;
+}
+.deleteDisabled{
+    background: url(../imgs/upload-tools.png) no-repeat -120px -56px;
+}
+.fun-btn .tool-image span{
+    position: initial;
+    display: inline-block;
+}
