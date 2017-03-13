@@ -183,27 +183,31 @@ $('#my_table').on('click', '.checkbox', function () {
     var allChecked = false;
     if ($this.attr('id') === 'check-all') {
         if ($this.prop('checked')) {
-            $this.prop('checked', true);
             $tbboxs.prop('checked', true);
+            iHomed( "enableTools", "deleteFile" );
         } else {
             $tbboxs.prop('checked', false);
-            $this.prop('checked', false);
+            iHomed( "disableTools", "deleteFile" );
         }
     } else {
         if ($this.prop('checked')) {
             allChecked = true;
-            $tbboxs.each(function () {
+            $tbboxs.each(function () {//判断是否全部选中
                 if ($(this).prop('checked') == false) {
                     allChecked = false;
                 }
             });
+            if($('.checkbox:checked').length >= 1 ){//判断是否有一个选中
+                iHomed( "enableTools", "deleteFile" );
+            }
             if (allChecked) {
                 $('#check-all').prop('checked', true);
             }
-            $this.prop('checked', true);
         } else {
             $('#check-all').prop('checked', false);
-            $this.prop('checked', false);
+            if($('.checkbox:checked').length === 0 ){//判断是否都没有选中
+                iHomed( "disableTools", "deleteFile" );
+            }
         }
     }
 })
@@ -248,3 +252,90 @@ var editBtns = [{
     }
 }];
 $('#edit-btn').iHomed('initTools', editBtns);
+var sortBtn = [{
+        type: "select",
+        disabled: false,
+        toolID: "sort-btn",
+        orientation: "horizontal",
+        onInit: function() {
+            $tool = $( this );
+        },
+        // select类型的快捷方式
+        quicker: {
+            text: "",
+            // 可选，点击主按钮时触发哪个子按钮的事件
+            // PS 设置该参数时，按钮会分成两部分，上部分可触发某个子按钮的事件，下部分点击出现子按钮选项
+            mapTo: "tool-option2",
+            quickClass: {
+                normal: "sortMainNormal",
+                hover: "sortMainHover",
+                disabled: "sortMainDisabled"
+            }
+        },
+        // select类型的子按钮
+        option: [{
+            toolID: "tool-option1",
+            text: "按创建时间"
+        }, {
+            toolID: "tool-option2",
+            text: "按操作时间"
+        }, {
+            toolID: "tool-option3",
+            text: "按上映时间"
+        }, {
+            toolID: "tool-option4",
+            text: "递增"
+        },{
+            toolID: "tool-option5",
+            text: "递减"
+        }],
+        // 按钮的事件和图标样式的映射
+        map: {
+            "tool-option1": {
+                action: function () {
+                    alert("点击了选项1");
+                },
+                iconClass: {
+                    normal: "opt1Normal",
+                    disabled: "opt1Disabled"
+                }
+            },
+            "tool-option2": {
+                action: function () {
+                    alert("点击了选项2");
+                },
+                iconClass: {
+                    normal: "opt2Normal",
+                    disabled: "opt2Disabled"
+                }
+            },
+            "tool-option3": {
+                action: function () {
+                    alert("点击了选项3");
+                },
+                iconClass: {
+                    normal: "opt3Normal",
+                    disabled: "opt3Disabled"
+                }
+            },
+            "tool-option4": {
+                action: function () {
+                    alert("点击了选项4");
+                },
+                iconClass: {
+                    normal: "opt4Normal",
+                    disabled: "opt4Disabled"
+                }
+            },
+            "tool-option5": {
+                action: function () {
+                    alert("点击了选项5");
+                },
+                iconClass: {
+                    normal: "opt5Normal",
+                    disabled: "opt5Disabled"
+                }
+            }
+        }
+    }];
+    $('.sort-btn').iHomed('initTools',sortBtn);
