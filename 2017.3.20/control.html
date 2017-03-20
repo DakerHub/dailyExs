@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 1280px;
+            height: 720px;
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background-color: #f15b6c;
+        }
+        
+        .progress-bar-wrapper {
+            position: absolute;
+            left: 0px;
+            bottom: -100px;
+            width: 1280px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, .8);
+        }
+        
+        .bar-outer {
+            position: relative;
+            left: 50px;
+            top: 10px;
+            width: 1080px;
+            height: 16px;
+            background-color: rgba(0, 0, 0, .7);
+        }
+        
+        .bar-inner {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 0px;
+            height: 100%;
+            background-color: #ffb400;
+        }
+        
+        .total-time {
+            position: absolute;
+            left: 1145px;
+            top: 10px;
+            line-height: 18px;
+            font-size: 22px;
+            color: #c8c8c8;
+        }
+        
+        .program-name {
+            position: absolute;
+            left: 50px;
+            top: 46px;
+            font-size: 28px;
+            line-height: 28px;
+            color: #c8c8c8;
+        }
+        
+        .tip {
+            position: absolute;
+            right: 50px;
+            top: 46px;
+            font-size: 22px;
+            line-height: 22px;
+            color: #c8c8c8;
+        }
+        
+        .seek-wrapper {
+            position: absolute;
+            left: 0px;
+            bottom: 90px;
+            width: 260px;
+            height: 182px;
+            opacity: 0;
+        }
+        .seek-inner-top{
+            width: 260px;
+            height: 172px;
+            background: url(time_seek_1.png) no-repeat 0 0;
+        }
+        .seek-inner-bottom{
+            width: 260px;
+            height: 10px;
+            background: url(time_seek_2.png) no-repeat 41px 0;
+        }
+        .seek-img{
+            width: 254px;
+            height: 145px;
+            margin: 0px 3px;
+            padding-top: 3px;
+        }
+        .seek-img img{
+            width: 100%;
+            height: 100%;
+        }
+        .seek-time{
+            width: 100%;
+            height: 25px;
+            text-align: center;
+            color: #000;
+            font-size: 22px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar-wrapper">
+        <div class="bar-outer">
+            <div class="bar-inner"></div>
+        </div>
+        <div class="total-time">01:30:00</div>
+        <div class="program-name">瑯铘榜(23)</div>
+        <div class="tip">请按▲键选择跳转时间</div>
+    </div>
+    <div class="seek-wrapper">
+        <div class="seek-inner-top">
+            <div class="seek-img"><img src="#"></div>
+            <div class="seek-time">00:00:00</div>
+        </div>
+        <div class="seek-inner-bottom"></div>
+    </div>
+    <script>
+        var innerBar = document.getElementsByClassName("bar-inner")[0],
+            outerBar = document.getElementsByClassName("bar-outer")[0],
+            seekWrapper = document.getElementsByClassName("seek-wrapper")[0],
+            seekBottom = document.getElementsByClassName("seek-inner-bottom")[0],
+            bar = document.getElementsByClassName("progress-bar-wrapper")[0],
+            seekTime = document.getElementsByClassName("seek-time")[0];
+        var barCtr = {
+            currentTime: "00:30:00",
+            maxTime: "01:30:00",
+            isEnd: false,
+            isBegin: false,
+            maxlen: 1080,
+            winWidth: 1280,
+            triHalf: 10,
+            stepRadio: 0.02,
+            seekHidden: true,
+            barHidden: true,
+            leftPos: parseInt(window.getComputedStyle(outerBar,null).left),
+            seekWidth: parseInt(window.getComputedStyle(seekWrapper,null).width),
+            timeSelect: function(flag){
+                var curLen = innerBar.style.width===""?0:parseInt(innerBar.style.width);
+                if(flag === "right"){
+                    this.isBegin = false;
+                    if(curLen < this.maxlen*(1-this.stepRadio)){
+                        curLen = this.changeBarL(curLen,true);//改变进度条长度
+                        this.changeSeekP(curLen);//改变seek图位置
+                        this.changeSeekSrc(curLen);
+                    }else{
+                        // 播放结束
+                        innerBar.style.width = this.maxlen + "px";
+                        seekWrapper.style.left = this.maxlen + this.leftPos - Math.floor(this.seekWidth/2) + "px";
+                        seekTime.innerHTML = this.maxTime;
+                        console.log(this.time2second(this.maxTime));
+                        this.isEnd = true;//改变标志位
+                        console.log("到播放结束");
+                    }
+                }else if(flag === "left"){
+                    this.isEnd = false;
+                    if(curLen > this.maxlen*this.stepRadio){
+                        curLen = this.changeBarL(curLen,false);//改变进度条长度
+                        this.changeSeekP(curLen);//改变seek图位置
+                        this.changeSeekSrc(curLen);
+                    }else{
+                        // 播放初始化
+                        innerBar.style.width = 0;
+                        seekWrapper.style.left = 0;
+                        seekBottom.style.backgroundPosition = this.leftPos - this.triHalf + "px";
+                        seekTime.innerHTML = "00:00:00";
+                        console.log(0);
+                        this.isBegin = true;//改变标志位
+                        console.log("到播放开始");
+                    }
+                }
+            },
+            time2second: function(timeStr){
+                var timeArr = timeStr.split(":");
+                return parseInt(timeArr[0])*3600+parseInt(timeArr[1])*60+parseInt(timeArr[2]);
+            },
+            second2time: function(seconds){
+                var sec = seconds%60;
+                var mins = (seconds-sec)/60;
+                var min = mins%60;
+                var hour = (mins-min)/60;
+                sec = sec.toString().length >= 2?sec:"0"+sec;
+                min = min.toString().length >= 2?min:"0"+min;
+                hour = hour.toString().length >= 2?hour:"0"+hour;
+                return hour+":"+min+":"+sec;
+            },
+            changeBarL: function(curLen,isAdd){
+                var step =  Math.floor(1080*this.stepRadio);
+                if(!isAdd){//如果不是增加的话反转步长的符号
+                    step = 0-step;
+                }
+                innerBar.style.width = (curLen + step) + "px";
+                return curLen + step;
+            },
+            changeSeekP: function(curLen){
+                if((curLen + this.leftPos) > Math.floor(this.seekWidth/2)){
+                    seekWrapper.style.left = (curLen + this.leftPos - Math.floor(this.seekWidth/2))+"px";
+                    seekBottom.style.backgroundPosition = (Math.floor(this.seekWidth/2)-this.triHalf)+"px 0";
+                }else{
+                    seekWrapper.style.left = 0;
+                    seekBottom.style.backgroundPosition = (curLen + this.leftPos - this.triHalf)+"px 0";
+                }
+            },
+            changeSeekSrc: function(curLen){
+                var maxSec = this.time2second(this.maxTime);
+                var curSec = Math.floor(maxSec*curLen/this.maxlen);
+                seekTime.innerHTML = this.second2time(curSec);
+            },
+            initBar: function(){
+                var _this = this;
+                if(_this.barHidden){
+                    var curSec = _this.time2second(_this.currentTime),
+                        maxSec = _this.time2second(_this.maxTime),
+                        curLen = Math.floor(_this.maxlen*curSec/maxSec),
+                        i = 2;
+                    innerBar.style.width = curLen + "px";
+                    _this.changeSeekP(curLen);//改变seek图位置
+                    _this.changeSeekSrc(curLen);
+                    function showBar(){
+                        i = i+1;
+                        setTimeout(function(){
+                            if(parseInt(window.getComputedStyle(bar,null).bottom) < 0){
+                                bar.style.bottom = parseInt(window.getComputedStyle(bar,null).bottom)+10+"px";
+                                setTimeout(showBar,16+i);
+                            }
+                        },16+i)
+                    }
+                    showBar();
+                    _this.barHidden = false;
+                }
+            },
+            showSeek: function(){
+                var _this = this;
+                if(_this.seekHidden){
+                    function showSeek(){
+                            setTimeout(function(){
+                                var opacity = seekWrapper.style.opacity===""?0:parseFloat(seekWrapper.style.opacity);
+                                if(opacity < 1){
+                                    seekWrapper.style.opacity = opacity+0.2;
+                                    setTimeout(showSeek,16);
+                                }
+                            },16)
+                    }
+                    showSeek();
+                    this.seekHidden = false;
+                }
+            }
+        }
+        document.onkeydown = function(e){
+            if(e.keyCode === 39){
+                barCtr.showSeek();
+                if(!barCtr.isEnd){//判断标志位，使结束事件不会重复触发
+                    barCtr.timeSelect("right");
+                }
+            }else if(e.keyCode === 37){
+                barCtr.showSeek();
+                if(!barCtr.isBegin){//判断标志位，使开始事件不会重复触发
+                    barCtr.timeSelect("left");
+                }
+            }else if(e.keyCode === 13){
+                barCtr.initBar();
+            }
+        }
+    </script>
+</body>
+
+</html>
