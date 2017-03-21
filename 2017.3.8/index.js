@@ -70,10 +70,6 @@ $(document).ready(function() {
      * 为频道获取按钮绑定ajax事件
      */
     $('.menu9').click(function(){
-        // var obj = {
-        //     list: [{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"},{chnl_name:"贵州卫视"}]
-        // };
-        // $('.container').append($(setDom(obj)));
         var url = "http://dtv.homed.me/media/task/get_list?";
         $.ajax({
             url: url,
