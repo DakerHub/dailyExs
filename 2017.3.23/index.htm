@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="page-view-size" content="1280*720">
+    <title></title>
+    <style>
+        .active{
+            outline: #FFEB3B;
+            outline-width: 3px;
+            outline-style: solid;
+            box-shadow: 6px 6px 11px 4px #666;
+        }
+    </style>
+</head>
+
+<body id="body"  style="background:url(images/tm_bg.jpg) no-repeat" leftmargin="0" topmargin="0">
+    <!-- 内容区 -->
+    <div id="title" style="position:absolute; left:1053px; top:40px; width:150px; height:50px;font-size:29px;font-weight:600;"></div>
+
+    <div style="position:absolute; left:53px; top:90px; width:1176px; height:540px; background:url() no-repeat left top;">
+        <div style="position: absolute; left: 44px; top: 30px; width: 328px; height: 225px;"><img id="sub_poster_0" src="" width="328" height="225" />
+            <div id="sub_name_0" style="position:absolute; left:0px; top:185px; width:328px; height:40px; background-image: url(images/cover.png); font-size:24px; color:#ffffff; line-height:40px; text-align:center;"></div>
+        </div>
+        <div style="position: absolute; left: 408px; top: 30px; width: 328px; height: 225px;"><img id="sub_poster_1" src="" width="328" height="225" />
+            <div id="sub_name_1" style="position:absolute; left:0px; top:185px; width:328px; height:40px; background-image: url(images/cover.png); font-size:24px; color:#ffffff; line-height:40px; text-align:center;"></div>
+        </div>
+        <div style="position: absolute; left: 772px; top: 30px; width: 328px; height: 225px;"><img id="sub_poster_2" src="" width="328" height="225" />
+            <div id="sub_name_2" style="position:absolute; left:0px; top:185px; width:328px; height:40px; background-image: url(images/cover.png); font-size:24px; color:#ffffff; line-height:40px; text-align:center;"></div>
+        </div>
+        <div style="position: absolute; left: 44px; top: 282px; width: 328px; height: 225px;"><img id="sub_poster_3" src="" width="328" height="225" />
+            <div id="sub_name_3" style="position:absolute; left:0px; top:185px; width:328px; height:40px; background-image: url(images/cover.png); font-size:24px; color:#ffffff; line-height:40px; text-align:center;"></div>
+        </div>
+        <div style="position: absolute; left: 408px; top: 282px; width: 328px; height: 225px;"><img id="sub_poster_4" src="" width="328" height="225" />
+            <div id="sub_name_4" style="position:absolute; left:0px; top:185px; width:328px; height:40px; background-image: url(images/cover.png); font-size:24px; color:#ffffff; line-height:40px; text-align:center;"></div>
+        </div>
+        <div style="position: absolute; left: 772px; top: 282px; width: 328px; height: 225px;"><img id="sub_poster_5" src="" width="328" height="225" />
+            <div id="sub_name_5" style="position:absolute; left:0px; top:185px; width:328px; height:40px; background-image: url(images/cover.png); font-size:24px; color:#ffffff; line-height:40px; text-align:center;"></div>
+        </div>
+        <!-- 焦点框 -->
+        <div id="sub_focus" style="position: absolute; left: 35px; top: 28px; width: 357px; height: 249px; background-image: url(images/focus01.png);visibility:hidden;"></div>
+        <!-- 翻页提示栏 -->
+        <div style="position:absolute; left:1125px; top:29px; width:30px; height:483px; background:url(images/pageSliderBtm.png) no-repeat left top;">
+            <div id="barDiv" style="position:absolute; left:0px; top:30px; width:30px; height:80px; background:url(images/pageSliderBar.png); font-size:20px; color:#ffffff; text-align:center; padding-top:8px;"><span id="current_page"></span><br />/<br /><span id="total_page"></span></div>
+        </div>
+
+    </div>
+    <!---滚动字幕-->
+    <div style="position: absolute; left: 113px; top: 648px; width: 700px; height: 30px; font-size: 22px; line-height: 30px; overflow: hidden;">
+        <div style="position:absolute; left:0px; top:0px; height:30px;width:463px;;font-size:22px;line-height:30px;color:#fff; width: 727px;-webkit-transition-duration:500ms;"
+            align="left" id="marquee_ad0"></div>
+        <div style="position:absolute; left:0px; top:-30px; height:30px;width:463px;;font-size:22px;line-height:30px;color:#fff; width: 727px;-webkit-transition-duration:500ms;"
+            align="left" id="marquee_ad1"></div>
+    </div>
+
+    <!--提示信息-->
+    <div style="position: absolute; left: 930px; top: 648px; font-size:18px; color:#333; font-weight:bold; width: 400px; height: 40px;">
+        <div style="float:left; height:30px; line-height:30px;">
+            <div style="float:left;"><img src="images/zy.png" style="padding-top:5px;" /></div>
+            <div style="float:left;"><img src="images/sx.png" style="padding-top:5px;" /></div>
+            <div style="float:left;">键选择</div>
+        </div>
+        <div style="float:left; margin-left:10px; height:30px; line-height:30px;">
+            <div style="float:left;"><img src="images/qr.png" /></div>
+            <div style="float:left;">进入</div>
+        </div>
+        <div style="float:left; margin-left:10px; height:30px; line-height:30px;">
+            <div style="float:left;"><img src="images/fh.png" /></div>
+            <div style="float:left;">返回</div>
+        </div>
+    </div>
+    <script src="js/common.js"></script>
+    <!--<script src="node.js"></script>-->
+    <!--<script src="content.js"></script>-->
+    <script src="js/index.js"></script>
+</body>
+
+</html>

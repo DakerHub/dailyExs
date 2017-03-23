@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <meta name="page-view-size" content="1280*720">
+  <title></title>
+</head>
+
+<body id="body" onload="init()" style="background:url(images/tm_bg.jpg) no-repeat;" leftmargin="0" topmargin="0">
+  <div id="title" style="position:absolute; left:1023px; top:40px; width:190px; height:50px;font-size:30px;font-weight:600;"></div>
+  <!-- 内容 -->
+  <div style="position:absolute; top:138px; left:700px; width:510px; height:510px;overflow:hidden;">
+    <div id="content" style="position:absolute; top:0px; left:0px; width:505px; line-height:30px; font-size:26px; color:#252525;">
+    </div>
+  </div>
+  <!-- 左侧图片栏目 -->
+  <!-- 大图 -->
+  <div style="position:absolute; top:112px; left:69px; width:623px; height:435px;"><img id="bigImg" style="width: 100%; height: 100%; vertical-align: middle;" />
+  </div>
+  <!-- 小图 -->
+  <div style="position:absolute; top:550px; left:70px; width:150px; height:97px;"><img id="img0" width="150" height="97" />
+  </div>
+  <div style="position:absolute; top:550px; left:226px; width:150px; height:97px;"><img id="img1" width="150" height="97" />
+    <!--   <div style="position:absolute; top:0px; left:0px; width:126px; height:87px; background-image: url(images/cover0.png);"> -->
+    <!-- </div> -->
+  </div>
+  <div style="position:absolute; top:550px; left:384px; width:150px; height:97px;"><img id="img2" width="150" height="97" />
+    <!--   <div style="position:absolute; top:0px; left:0px; width:126px; height:87px; background-image: url(images/cover0.png);"> -->
+    <!-- </div>   -->
+  </div>
+  <div style="position:absolute; top:550px; left:542px; width:150px; height:97px;"><img id="img3" width="150" height="97" />
+    <!--   <div style="position:absolute; top:0px; left:0px; width:126px; height:87px; background-image: url(images/cover0.png);"> -->
+    <!-- </div>   -->
+  </div>
+  <!-- 焦点框 -->
+  <div id="picNow" style="position:absolute;left:66px;top:547px;height:101px; width: 156px;border:3px solid #FAFA00;"></div>
+  <!-- 标题，分割线 -->
+  <div id="contentTitle" style="position:absolute; left:705px; top:104px; width:500px; height:30px;font-size:27px;font-weight:600;text-align:center;"></div>
+
+  <!--翻页栏-->
+  <div style="position: absolute; left: 1220px; top: 111px; width: 2px; height: 520px; background-color: #FAFA00;" id="scrollBarDiv">
+    <div style="position:absolute; left:-12px; top:40px; width:29px; height:61px; background-image: url(images/page.png); visibility:hidden"
+      id="barDiv">
+      <div style="position:absolute; left:0px; top:0px; width:29px; height:29px; font-size:24px; color:#ffffff; text-align:center;"
+        id="currPage"></div>
+      <div style="position:absolute; left:0px; top:31px; width:29px; height:29px; font-size:24px; color:#ffffff; text-align:center;"
+        id="totalPage"></div>
+    </div>
+  </div>
+
+  <!--提示信息-->
+  <div style="position: absolute; left: 1040px; top: 674px; font-size:18px; color:#333; font-weight:bold; width: 400px; height: 40px;">
+    <div style="float:left; height:30px; line-height:30px;">
+      <div style="float:left;"><img src="images/zy.png" style="padding-top:5px;" /></div>
+      <div style="float:left;"><img src="images/sx.png" style="padding-top:5px;" /></div>
+      <div style="float:left;">键选择</div>
+    </div>
+    <div style="float:left; margin-left:10px; height:30px; line-height:30px;">
+      <div style="float:left;"><img src="images/fh.png" /></div>
+      <div style="float:left;">返回</div>
+    </div>
+  </div>
+  <script src="js/common.js"></script>
+  <script src="js/content.js"></script>
+</body>
+
+</html>
