@@ -2,10 +2,11 @@ setGlobalVar("currentWindow","content");//设置窗口名以让主页区分是�
 var search = location.search.substring(1),
     contentUrl = "http://localhost/dailyExs/2017.3.23/content.json",//请求的数据地址，需更改此变量才能在你的环境运行
     nodeUrl = "http://localhost/dailyExs/2017.3.23/node.json",//请求的数据地址，需更改此变量才能在你的环境运行
-    content = null,
     util = new Util(),
     activeEle = document.getElementById("img0"),
     containerH = 510;
+
+/*
 util.ajax({//请求content内容
     method: "GET",
     url: contentUrl,
@@ -32,6 +33,23 @@ util.ajax({//请求content内容
         console.log("request failed")
     }
 });
+*/
+
+//模拟ajax请求成功后的数据处理
+success();
+function success(){
+    data = content;
+    var name = search.split("=")[0];
+    var val = search.split("=")[1];
+    for(var i=0;i<data.length;i++){
+        if(data[i][name] == val){
+            content = data[i];
+            util.render(data[i]);
+        }
+    }
+    document.getElementById("title").innerHTML = node.name;
+}
+
 document.onkeydown = function(e){
     switch(e.keyCode){
         case 39:

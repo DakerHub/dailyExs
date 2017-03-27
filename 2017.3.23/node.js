@@ -1,0 +1,1 @@
+window.node = { "blurImageUrl":"", "clickable":1, "enName":"djzhw", "entryWord":"", "focusImageUrl":"", "isManaged":"managed", "linkUrl":"", "listType":"", "name":"当季最好玩", "navigator":"当季最好玩", "newAdd":0, "nodePath":"djzhw" }

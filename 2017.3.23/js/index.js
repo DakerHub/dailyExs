@@ -1,5 +1,4 @@
 var util = new Util(),
-    content = null,
     activeId = "sub_poster_0",//需要同步全局变量记录焦点，焦点变换不更新该值
     currentPage = 1,//需要同步全局变量记录焦点
     currentImgs = 0,//当前视图的图片个数，用于判断按下键时是否有可选焦点
@@ -12,8 +11,8 @@ if(getGlobalVar("currentWindow") === "content"){//判断页面来源，如果由
 }
 setGlobalVar("currentWindow","index");//设置窗口名以区分是否是内容页跳转
 var activeEle = document.getElementById(activeId);//根据ID来获取当前焦点DOM元素
-
-
+//获取数据成功后对数据进行初始化渲染
+success();
 /**
  * 焦点移动的逻辑判断，通过设置class来识别焦点
  */
@@ -87,6 +86,7 @@ document.onkeyup = function(e){
 }
 
 //ajax请求，请求完成后获取的数据进行初始化渲染。
+/*
 util.ajax({
     method: "GET",
     url: contentUrl,
@@ -114,7 +114,21 @@ util.ajax({
         console.log("request failed")
     }
 });
+*/
 
+//假装已经获取到ajax数据
+function success(){
+    data = content;
+    document.getElementById("total_page").innerHTML = Math.ceil(data.length/6);
+    totalPage = Math.ceil(data.length/6);
+    currentImgs = (data.length - (currentPage - 1)*6)>6?6:(data.length - (currentPage - 1)*6);
+    document.getElementById("current_page").innerHTML = currentPage;
+    util.loadMsg(data.slice((currentPage-1)*6, currentPage*6));
+    util.addClass(activeEle,"active");
+    var order = parseInt(activeEle.id.substring(activeEle.id.length-1));
+    document.getElementById("sub_name_"+order).innerHTML = marqueeStr(data[(currentPage-1)*6+order].title,8,"240px");
+    document.getElementById("title").innerHTML = node.name;
+}
 //工具对象定义
 function Util() {
     this.ajax = function (paramObj) {//ajax方法

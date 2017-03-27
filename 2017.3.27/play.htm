@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="page-view-size" content = "1280*720">
+<title>play</title>
+<style>
+    html,body{
+        margin: 0;
+        height: 720px;
+        width: 1280px;
+        padding: 0;
+        background-color: #f2eada;
+    }
+    .pf{
+        position: fixed;
+        left: 140px;
+        bottom: 20px;
+        width:1000px;
+        height:160px;
+        border-radius: 20px;
+        background-color:  rgba(27,49,94,.8);
+    }
+    .chan-info{
+        width:200px;
+        height:30px;
+        position: absolute;
+        top:10px;
+        left:20px;
+    }
+    .chan-info div{
+        font-size: 28px;
+        line-height: 30px;
+        color: #fff;
+        text-align: left;
+        padding-left: 10px;
+        display: inline-block;
+    }
+    .progress{
+        position: absolute;
+        left: 250px;
+        top:20px;
+        width: 400px;
+        height: 20px;
+        overflow: hidden;
+    }
+    .progress .bar-outer{
+        height: 20px;
+        width: 400px;
+        position: absolute;
+        top:0;
+        left:0;
+        border-radius: 5px;
+        background-color: #f2eada;
+    }
+    .progress .bar-inner{
+        height: 20px;
+        width: 150px;
+        position: absolute;
+        top:0;
+        left:0;
+        border-radius: 5px;
+        background-color: #f15b6c;
+        box-shadow: -1px 0px 8px 3px #660000;
+    }
+    .pro-info{
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        width: 720px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    .ad{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 240px;
+        height: 140px;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+</style>
+</head>
+<body>
+    <div class="pf">
+        <div class="chan-info">
+            <div class="chan-num">001</div>
+            <div class="chan-name">CCTV-1</div>
+        </div>
+        <div class="progress">
+            <div class="bar-outer"></div>
+            <div class="bar-inner"></div>
+        </div>
+        <div class="pro-info">
+            <div class="cur-pro"></div>
+            <div class="next-pro"></div>
+        </div>
+        <div class="ad"></div>
+    </div>
+</body>
+</html>
