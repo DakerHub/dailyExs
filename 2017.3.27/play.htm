@@ -43,16 +43,11 @@
         width: 400px;
         height: 20px;
         overflow: hidden;
-    }
-    .progress .bar-outer{
-        height: 20px;
-        width: 400px;
-        position: absolute;
-        top:0;
-        left:0;
         border-radius: 5px;
-        background-color: #f2eada;
+        background-color: #fff;
+        box-shadow: 0px 2px 3px 0px #2d2d2d inset;
     }
+   
     .progress .bar-inner{
         height: 20px;
         width: 150px;
@@ -61,7 +56,7 @@
         left:0;
         border-radius: 5px;
         background-color: #f15b6c;
-        box-shadow: -1px 0px 8px 3px #660000;
+        box-shadow: -1px 0px 3px 2px #2d2d2d;
     }
     .pro-info{
         position: absolute;
@@ -81,21 +76,132 @@
         border-radius: 10px;
         background-color: #fff;
     }
+    .time{
+        display: inline-block;
+        position: absolute;
+        left: 500px;
+    }
+    .pro{
+        width: 660px;
+        height: 43px;
+        padding: 3px 0;
+        margin: 0 30px;
+    }
+    .pro span{
+        font-size: 24px;
+        line-height: 43px;
+        color: rgb(27,49,94);
+    }
+    .cur-pro{
+        border-bottom: 3px solid rgb(27,49,94);
+    }
+    .volume{
+        position: fixed;
+        left: 340px;
+        top:480px;
+        width: 600px;
+        height: 50px;
+        background-color: rgba(0,0,0,.5);
+        border-radius: 10px;
+    }
+    .volume-outer{
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        width: 500px;
+        height: 30px;
+        background-color: #ccc;
+        border-radius: 5px;
+    }
+    .volume-num{
+        position: absolute;
+        left: 520px;
+        top: 10px;
+        width: 80px;
+        height: 30px;
+        font-size: 28px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+    }
+    .volume-inner{
+        width: 200px;
+        height: 30px;
+        background-color: #f15b6c;
+        border-radius: 5px;
+    }
+    .lock{
+        position: fixed;
+        top:250px;
+        left: 340px;
+        width: 600px;
+        height: 200px;
+        border-radius: 20px;
+        background-color: rgba(27,49,94,.8);
+    }
+    .lock div{
+        line-height: 38px;
+        font-size: 28px;
+        width: 600px;
+        text-align: center;
+        color: #fff;
+    }
+    
+    .lock-tip{
+        border-top: 2px solid #fff;
+        padding-top: 10px;
+    }
+    #pw{
+        width: 400px;
+        height: 40px;
+        margin-left: 100px;
+        margin-top: 40px;
+        font-size: 30px;
+        outline: none;
+        letter-spacing: 20px;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
+    <div class="lock">
+        <div class="lock-tip-top">提示</div>
+        <div class="lock-tip">此节目需要输入密码才能观看</div>
+        <input type="num" placeholder="请输入四位密码" id="pw">
+    </div>
+    <div class="volume">
+        <div class="volume-outer">
+            <div class="volume-inner"></div>
+        </div>
+        <div class="volume-num">12</div>
+    </div>
     <div class="pf">
         <div class="chan-info">
             <div class="chan-num">001</div>
             <div class="chan-name">CCTV-1</div>
         </div>
         <div class="progress">
-            <div class="bar-outer"></div>
             <div class="bar-inner"></div>
         </div>
         <div class="pro-info">
-            <div class="cur-pro"></div>
-            <div class="next-pro"></div>
+            <div class="cur-pro pro">
+                <span>当前节目：</span>
+                <span id="cur-pro">新闻联播</span>
+                <div class="time">
+                    <span id="cur-begin-time">19:00</span>
+                    <span>-</span>
+                    <span id="cur-end-time">19:30</span>
+                </div>
+            </div>
+            <div class="next-pro pro">
+                <span>下个节目：</span>
+                <span id="next-pro">焦点访谈</span>
+                <div class="time">
+                    <span id="next-begin-time">19:40</span>
+                    <span>-</span>
+                    <span id="next-end-time">20:30</span>
+                </div>
+            </div>
         </div>
         <div class="ad"></div>
     </div>
