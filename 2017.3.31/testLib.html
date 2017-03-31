@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            background-color: #666;
+            color: #fff;
+            border: thin solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">一个DIV</div>
+    <div class="div">又一个DIV</div>
+    <script src="../lib/fengcc.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script>
+        
+        fcc("#div").addClass("active");
+        console.log($("#div"));
+        fcc.ajax({
+            url:"http://localhost/dailyExs/2017.3.31/test.json",
+            method: "GET",
+            onsuccess: function(data){
+                console.log(data);
+            }
+        });
+    </script>
+</body>
+</html>

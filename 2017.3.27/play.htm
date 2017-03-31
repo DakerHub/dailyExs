@@ -1,173 +1,225 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="page-view-size" content = "1280*720">
-<title>play</title>
-<style>
-    html,body{
-        margin: 0;
-        height: 720px;
-        width: 1280px;
-        padding: 0;
-        background-color: #f2eada;
-    }
-    .pf{
-        position: fixed;
-        left: 140px;
-        bottom: 20px;
-        width:1000px;
-        height:160px;
-        border-radius: 20px;
-        background-color:  rgba(27,49,94,.8);
-    }
-    .chan-info{
-        width:200px;
-        height:30px;
-        position: absolute;
-        top:10px;
-        left:20px;
-    }
-    .chan-info div{
-        font-size: 28px;
-        line-height: 30px;
-        color: #fff;
-        text-align: left;
-        padding-left: 10px;
-        display: inline-block;
-    }
-    .progress{
-        position: absolute;
-        left: 250px;
-        top:20px;
-        width: 400px;
-        height: 20px;
-        overflow: hidden;
-        border-radius: 5px;
-        background-color: #fff;
-        box-shadow: 0px 2px 3px 0px #2d2d2d inset;
-    }
-   
-    .progress .bar-inner{
-        height: 20px;
-        width: 150px;
-        position: absolute;
-        top:0;
-        left:0;
-        border-radius: 5px;
-        background-color: #f15b6c;
-        box-shadow: -1px 0px 3px 2px #2d2d2d;
-    }
-    .pro-info{
-        position: absolute;
-        top: 50px;
-        left: 20px;
-        width: 720px;
-        height: 100px;
-        border-radius: 10px;
-        background-color: #fff;
-    }
-    .ad{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 240px;
-        height: 140px;
-        border-radius: 10px;
-        background-color: #fff;
-    }
-    .time{
-        display: inline-block;
-        position: absolute;
-        left: 500px;
-    }
-    .pro{
-        width: 660px;
-        height: 43px;
-        padding: 3px 0;
-        margin: 0 30px;
-    }
-    .pro span{
-        font-size: 24px;
-        line-height: 43px;
-        color: rgb(27,49,94);
-    }
-    .cur-pro{
-        border-bottom: 3px solid rgb(27,49,94);
-    }
-    .volume{
-        position: fixed;
-        left: 340px;
-        top:480px;
-        width: 600px;
-        height: 50px;
-        background-color: rgba(0,0,0,.5);
-        border-radius: 10px;
-    }
-    .volume-outer{
-        position: absolute;
-        top: 10px;
-        left: 20px;
-        width: 500px;
-        height: 30px;
-        background-color: #ccc;
-        border-radius: 5px;
-    }
-    .volume-num{
-        position: absolute;
-        left: 520px;
-        top: 10px;
-        width: 80px;
-        height: 30px;
-        font-size: 28px;
-        line-height: 30px;
-        text-align: center;
-        color: #fff;
-    }
-    .volume-inner{
-        width: 200px;
-        height: 30px;
-        background-color: #f15b6c;
-        border-radius: 5px;
-    }
-    .lock{
-        position: fixed;
-        top:250px;
-        left: 340px;
-        width: 600px;
-        height: 200px;
-        border-radius: 20px;
-        background-color: rgba(27,49,94,.8);
-    }
-    .lock div{
-        line-height: 38px;
-        font-size: 28px;
-        width: 600px;
-        text-align: center;
-        color: #fff;
-    }
-    
-    .lock-tip{
-        border-top: 2px solid #fff;
-        padding-top: 10px;
-    }
-    #pw{
-        width: 400px;
-        height: 40px;
-        margin-left: 100px;
-        margin-top: 40px;
-        font-size: 30px;
-        outline: none;
-        letter-spacing: 20px;
-        text-align: center;
-    }
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="page-view-size" content="1280*720">
+    <title>play</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 720px;
+            width: 1280px;
+            padding: 0;
+            background-color: #f2eada;
+        }
+        
+        .pf {
+            position: fixed;
+            left: 140px;
+            bottom: 20px;
+            width: 1000px;
+            height: 160px;
+            border-radius: 20px;
+            background-color: rgba(27, 49, 94, .8);
+            visibility: hidden;
+        }
+        
+        .chan-info {
+            width: 200px;
+            height: 30px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .chan-info div {
+            font-size: 28px;
+            line-height: 30px;
+            color: #fff;
+            text-align: left;
+            padding-left: 10px;
+            display: inline-block;
+        }
+        
+        .progress {
+            position: absolute;
+            left: 300px;
+            top: 20px;
+            width: 400px;
+            height: 20px;
+            overflow: hidden;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 2px 3px 0px #2d2d2d inset;
+        }
+        
+        .progress .bar-inner {
+            height: 20px;
+            width: 150px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+            background-color: #f15b6c;
+            box-shadow: -1px 0px 3px 2px #2d2d2d;
+        }
+        
+        .pro-info {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            width: 720px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        
+        .ad {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 240px;
+            height: 140px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        
+        .time {
+            display: inline-block;
+            position: absolute;
+            left: 500px;
+        }
+        
+        .pro {
+            width: 660px;
+            height: 43px;
+            padding: 3px 0;
+            margin: 0 30px;
+        }
+        
+        .pro span {
+            font-size: 24px;
+            line-height: 43px;
+            color: rgb(27, 49, 94);
+        }
+        
+        .cur-pro {
+            border-bottom: 3px solid rgb(27, 49, 94);
+        }
+        
+        .volume {
+            position: fixed;
+            left: 340px;
+            top: 480px;
+            width: 600px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            visibility: hidden;
+        }
+        
+        .volume-outer {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            width: 500px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+        
+        .volume-num {
+            position: absolute;
+            left: 520px;
+            top: 10px;
+            width: 80px;
+            height: 30px;
+            font-size: 28px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .volume-inner {
+            width: 200px;
+            height: 30px;
+            background-color: #f15b6c;
+            border-radius: 5px;
+        }
+        
+        .lock {
+            position: fixed;
+            top: 250px;
+            left: 340px;
+            width: 600px;
+            height: 200px;
+            border-radius: 20px;
+            background-color: rgba(27, 49, 94, .8);
+            visibility: hidden;
+        }
+        
+        .lock div {
+            line-height: 38px;
+            font-size: 28px;
+            width: 600px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .lock-tip {
+            border-top: 2px solid #fff;
+            padding-top: 10px;
+        }
+        
+        #pw {
+            width: 400px;
+            height: 40px;
+            margin-left: 100px;
+            margin-top: 40px;
+            font-size: 30px;
+            outline: none;
+            letter-spacing: 20px;
+            text-align: center;
+            border: none;
+        }
+        
+        .chan-num-input {
+            position: fixed;
+            top: 40px;
+            right: 50px;
+            height: 50px;
+            width: 100px;
+            visibility: hidden;
+        }
+        
+        .chan-num-input span {
+            font-size: 48px;
+            line-height: 50px;
+            color: rgba(27, 49, 94, .8);
+        }
+        .chan-list-wrapper{
+            width: 400px;
+            height: 400px;
+            position: fixed;
+            left: 50px;
+            top: 40px;
+            background-color:#ccc;
+
+        }
+    </style>
 </head>
+
 <body>
+    <div class="chan-list-wrapper">
+        <div class="chan-group"></div>
+        <div class="chan-list"></div>
+    </div>
     <div class="lock">
         <div class="lock-tip-top">提示</div>
         <div class="lock-tip">此节目需要输入密码才能观看</div>
-        <input type="num" placeholder="请输入四位密码" id="pw">
+        <input type="password" placeholder="请输入四位密码" id="pw">
     </div>
     <div class="volume">
         <div class="volume-outer">
@@ -179,6 +231,8 @@
         <div class="chan-info">
             <div class="chan-num">001</div>
             <div class="chan-name">CCTV-1</div>
+            <div class="chan-fav"></div>
+            <div class="chan-lock"></div>
         </div>
         <div class="progress">
             <div class="bar-inner"></div>
@@ -205,5 +259,190 @@
         </div>
         <div class="ad"></div>
     </div>
+    <div class="chan-num-input">
+        <span id="num-2">0</span>
+        <span id="num-1">2</span>
+        <span id="num-0">3</span>
+    </div>
+    <script>
+        var util = new Util();
+        var h = document.getElementById("num-2"),
+            t = document.getElementById("num-1"),
+            u = document.getElementById("num-0"),
+            pw = document.getElementById("pw"),
+            chanNumInput = document.getElementsByClassName("chan-num-input")[0],
+            lockDiv = document.getElementsByClassName("lock")[0],
+            pf = document.getElementsByClassName("pf")[0],
+            vol = document.getElementsByClassName("volume")[0],
+            volBar = document.getElementsByClassName("volume-inner")[0],
+            volVal = document.getElementsByClassName("volume-num")[0];
+        document.onkeyup = function (e) {
+            var code = e.keyCode;
+            if (code >= 48 && code <= 57) {//用户按下数字键的处理
+                if(!util.lockShow){
+                    util.numKeyHandle(code);
+                }
+            } else if (code === 40 || code === 38) {
+                if (util.navShow) {//如果导航条显示，则上下左右键的处理优先在导航栏
+
+                } else {
+                    util.changeChan(code);
+                }
+            } else if(code === 37 || code === 39){
+                if (util.navShow) {//如果导航条显示，则上下左右键的处理优先在导航栏
+
+                } else {
+                    util.changeVol(code);
+                }
+            }else if(code === 13){
+                if(!util.lockShow){
+                    //弹出菜单
+                }else{
+                    //验证密码，渲染页面
+                    lockDiv.style.visibility = "hidden";
+                }
+            }
+        }
+        function Util() {
+            this.inputTime = 0;
+            this.navShow = false;
+            this.lockShow = false;
+            this.timeout = 0;
+            this.numTimeout = 0;
+            this.volTimeout = 0;
+            this.maxVol = 31;
+            this.curVol = 12;
+            this.lock = true;
+            this.changeChan = function(code){
+                chanNumInput.style.visibility = "visible";
+                pf.style.visibility = "visible";
+                if(code === 38){
+                    this.refreshNum(1);//向上切换频道
+                }else{
+                    util.refreshNum(-1);//向下切换频道
+                }
+                this.turnTo(this.getChanNum());
+                //如果连续上下切换频道，则重置隐藏延时
+                clearTimeout(this.numTimeout);
+                this.numTimeout = setTimeout(function(){
+                    chanNumInput.style.visibility = "hidden";
+                    pf.style.visibility = "hidden";
+                },1000);
+            };
+            this.numKeyHandle = function (code) {
+                var _this = this;
+                //初始化频道显示为000
+                if (this.inputTime === 0) {
+                    h.innerHTML = 0;
+                    t.innerHTML = 0;
+                    u.innerHTML = 0;
+                }
+                chanNumInput.style.visibility = "visible";
+                 pf.style.visibility = "visible";
+                //响应键盘的输入，改变频道显示
+                this.refreshNum(0, code - 48);
+
+                //如果延迟时间内有数字输入，则重置延时；
+                clearTimeout(this.timeout);
+                clearTimeout(this.numTimeout);
+                this.timeout = setTimeout(function () {
+                    //跳转
+                    var chanNum = _this.getChanNum();
+                    console.log("跳转至" + chanNum);
+                    _this.turnTo(chanNum);
+                    //跳转后的初始化
+                    _this.inputTime = 0;
+                    _this.numtimeout = setTimeout(function(){
+                        chanNumInput.style.visibility = "hidden";
+                        pf.style.visibility = "hidden";
+                    },1000);
+                }, 1000);
+            };
+            this.getChanNum = function () {
+                var hn = parseInt(h.innerHTML);
+                var tn = parseInt(t.innerHTML);
+                var un = parseInt(u.innerHTML);
+                return hn * 100 + tn * 10 + un;
+            };
+            this.refreshNum = function (flag, num) {
+                switch (flag) {
+                    case 0:
+                        if (this.inputTime < 3) {
+                            h.innerHTML = t.innerHTML;
+                            t.innerHTML = u.innerHTML;
+                            u.innerHTML = num;
+                            this.inputTime++;
+                        }
+                        break;
+                    case 1:
+                        if (parseInt(u.innerHTML) === 9) {
+                            if (parseInt(t.innerHTML) === 9) {
+                                if (parseInt(h.innerHTML) < 9) {
+                                    h.innerHTML = parseInt(h.innerHTML) + 1;
+                                    t.innerHTML = 0;
+                                    u.innerHTML = 0;
+                                }
+                            } else {
+                                t.innerHTML = parseInt(t.innerHTML) + 1;
+                                u.innerHTML = 0;
+                            }
+                        } else {
+                            u.innerHTML = parseInt(u.innerHTML) + 1;
+                        }
+                        break;
+                    case -1:
+                        if (parseInt(u.innerHTML) === 0) {
+                            if (parseInt(t.innerHTML) === 0) {
+                                if (parseInt(h.innerHTML) > 0) {
+                                    h.innerHTML = parseInt(h.innerHTML) - 1;
+                                    t.innerHTML = 9;
+                                    u.innerHTML = 9;
+                                }
+                            } else {
+                                t.innerHTML = parseInt(t.innerHTML) - 1;
+                                u.innerHTML = 9;
+                            }
+                        } else {
+                            u.innerHTML = parseInt(u.innerHTML) - 1;
+                        }
+                        break;
+                }
+            };
+            this.changeVol = function(code){
+                vol.style.visibility = "visible";
+                clearTimeout(this.volTimeout);
+                var step = 1;
+                if(code === 37){
+                    step = -1;
+                }
+                if((this.curVol + step)<0){
+                    this.curVol = 0;
+                }else if((this.curVol + step)> this.maxVol){
+                    this.curVol= this.maxVol;
+                }else{
+                    this.curVol += step; 
+                }
+                volBar.style.width = this.curVol/this.maxVol*500 + "px";
+                volVal.innerHTML = this.curVol;
+                this.volTimeout = setTimeout(function(){
+                    vol.style.visibility = "hidden";
+                },1000);
+            };
+            this.turnTo = function(chanNum){
+                this.render(chanNum);
+            };
+            this.render = function(chanNum){
+                if(this.lock){
+                    lockDiv.style.visibility = "visible";
+                    this.lockShow = true;
+                    pw.value = "";
+                    pw.focus();
+                }else{
+
+                }
+            }
+        }
+    </script>
 </body>
+
 </html>
