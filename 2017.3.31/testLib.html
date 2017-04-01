@@ -16,11 +16,15 @@
 <body>
     <div id="div">一个DIV</div>
     <div class="div">又一个DIV</div>
+    <div class="div">又一个DIV</div>
+    <div class="div">又一个DIV</div>
+    <div class="div">又一个DIV</div>
     <script src="../lib/fengcc.js"></script>
     <script src="../lib/jquery.js"></script>
     <script>
-        
+        console.log(fcc(".div"));
         fcc("#div").addClass("active");
+        fcc(".div").addClass("active");
         console.log($("#div"));
         fcc.ajax({
             url:"http://localhost/dailyExs/2017.3.31/test.json",
