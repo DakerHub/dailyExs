@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .option{
+            display: block;
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            background-color: #ddd;
+            margin: 2px 0;
+            text-align: center;
+            line-height: 30px;
+            user-select: none;
+            cursor: pointer;
+        }
+        .current{
+            color: #fff;
+            background-color: #336;
+        }
+    </style>
+</head>
+<body>
+    <ul id="nav">
+        <li class="option current">1</li>
+        <li class="option">2</li>
+        <li class="option">3</li>
+        <li class="option">4</li>
+        <li class="option">5</li>
+        <li class="option">6</li>
+    </ul>
+    <script src="../lib/fengcc.js"></script>
+    <script>
+        // function bindNav(navDom,clazz,current,callback){
+        //     navDom.addEventListener("click",function(e){
+        //         var target = e.target;
+        //         if(target.getAttribute("class") && target.getAttribute("class").indexOf(clazz) >= 0){
+        //             e.preventDefault();
+        //             if(target.getAttribute("class") && target.getAttribute("class").indexOf(current) < 0){
+        //                 fcc("."+current).removeClass(current);
+        //                 fcc(target).addClass(current);
+        //                 if(typeof callback === "function"){
+        //                     callback(target);
+        //                 }
+        //             }
+        //         }
+        //     })
+        // }
+        // bindNav(document.getElementById("nav"),"option","current",function(target){
+        //     console.log(target.innerText);
+        // });
+        fcc("#nav").bindNav("option","current",function(target){
+            console.log(target.innerText);
+        })
+    </script>
+</body>
+</html>

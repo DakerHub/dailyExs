@@ -4,31 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
     <title>Document</title>
+    <style>
+        .interval{
+            position:absolute;
+            top:10px;
+            left:20px;
+            width: 120px;
+            height: 20px;
+        }
+        .interval div{
+            display: inline-block;
+            width: 40px;
+            height: 100%;
+            background-color: #ddd;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .interval .current{
+            background-color: #336;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <div class="chart" style="width:600px;height:400px;"></div>
+    <div class="chart2" style="width:600px;height:400px;border:thin solid #ccc;float: left;">
+    </div>
+    <div class="chart1" style="width:600px;height:400px;border:thin solid #ccc;float: left;">
+    </div>
+    <div class="interval"><div class="time">日</div><div class="time current">月</div><div class="time">年</div></div>
+    <div class="chart3" style="width:600px;height:400px;border:thin solid #ccc;float: left;"></div>
     <script src="../lib/echarts.js"></script>
+    <script src="../lib/fengcc.js"></script>
     <script>
-        var chart = echarts.init(document.getElementsByClassName("chart")[0]);
-        var option = {
-            title: {
-                text: 'ECharts 入门示例'
+        var chart1 = echarts.init(document.getElementsByClassName("chart1")[0]);
+        var chart2 = echarts.init(document.getElementsByClassName("chart2")[0]);
+        var chart3 = echarts.init(document.getElementsByClassName("chart3")[0]);
+        var option1 = {
+            grid: {
+                width: 350,
+                height: 300,
+                top: 10
             },
             tooltip: {},
             legend: {
                 data:['实际销售数量','意向订单数量'],
                 right: 5,
+                top: 150,
                 orient: "'vertical"
             },
             xAxis: {
-                data: [{
-                    value:"衬衫",
-                    textStyle:{
-                        color: "#ddd",
-                        transform: "rotate(45deg)"
-                    }
-                },"羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+                axisLabel:{
+                    interval: 0,
+                    rotate: 45
+                },
+                data: ["羊毛衫羊毛衫","羊毛衫羊毛衫","雪纺衫羊毛衫","裤子羊毛衫","高跟鞋羊毛衫","袜子羊毛衫"],
             },
             yAxis: {},
             series: [{
@@ -38,10 +71,96 @@
             },{
                 name: '意向订单数量',
                 type: 'bar',
-                data: [6, 25, 30, 8, 3, 4]
+                data: [6, 25, 30, 8, 3, 4],
+                barGap: '0'
             }]
         }
-        chart.setOption(option);
+        var option2_0 ={
+            tooltip: {},
+            xAxis: {
+                 data: [2,3,4,5,6,7,8,9,10]
+            },
+            yAxis: {},
+            series: [{
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 14,
+                data: [2,23,14,3,3,33,42,13,34]
+            }]
+        }
+        var option2_1 ={
+            tooltip: {},
+            xAxis: {
+                 data: ["一月","二月","三月","四月","五月","六月","一月","二月","三月","四月","五月","六月"]
+            },
+            yAxis: {},
+            series: [{
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 14,
+                data: [12,3,4,53,13,23,12,3,4,53,13,23]
+            }]
+        }
+        var option2_2 ={
+            tooltip: {},
+            xAxis: {
+                 data: [2011,2012,2013,2014,2015,2016,2017]
+            },
+            yAxis: {},
+            series: [{
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 14,
+                data: [13,2,23,42,3,4,45]
+            }]
+        }
+        var option3 ={
+            tooltip: {},
+            legend: {
+                data:['访问量','销售额','销量'],
+                right: 5,
+                top: 20
+            },
+            xAxis: {
+                 data: ["一月","二月","三月","四月","五月","六月"]
+            },
+            yAxis: {},
+            series: [{
+                name: '访问量',
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 14,
+                data: [12,3,4,53,13,23]
+            },{
+                name: '销售额',
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 14,
+                data: [2,12,32,12,23,3]
+            },{
+                name: '销量',
+                type: 'line',
+                symbol: 'circle',
+                symbolSize: 14,
+                data: [11,2,5,32,7,11]
+            }]
+        }
+        chart1.setOption(option1);
+        chart2.setOption(option2_1);
+        chart3.setOption(option3);
+        fcc(".interval").bindNav("time","current",function(target){
+            switch(target.innerText){
+                case "日":
+                chart2.setOption(option2_0);
+                break;
+                case "月":
+                chart2.setOption(option2_1);
+                break;
+                case "年":
+                chart2.setOption(option2_2);
+                break;
+            }
+        })
     </script>
 </body>
 </html>

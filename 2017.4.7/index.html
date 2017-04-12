@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../lib/uploadfive.css">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div id="queue"></div>
+        <input id="file_upload" name="file_upload" type="file" multiple="true">
+        <a href="javascript:$('#file_upload').uploadfive('upload','*')">全部上传有*</a>
+        <h2>将文件拖拽到此处上传</h2>
+    </form>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/jquery.uploadfive.js"></script>
+    <script>
+        $('#file_upload').uploadfive({
+        uploader: "",
+        queueID: "queue",
+        multi: true,
+        fileTypeExts: "*.*",
+        processData: "speed",
+        fileObjName: "fileToUpload",
+        removeCompleted: false,
+        removeCancelled: false,
+        dataType: "json",
+        auto: false,
+        dragField: $("h2"),// 可拖拽上传区域
+        onSelect: function (file) {
+            console.log("onSelect-----------");
+            console.log(this);
+            console.log(file);
+            //console.log(file.name);
+            // $('#file_upload').uploadfive("upload", file.id);
+            
+        },
+        onUploadStart: function (file) {
+            console.log("onUploadStart-----------");
+            console.log(file.name);
+            console.log(this);
+            console.log(arguments);
+            $('#file_upload').uploadfive("settings", "uploader", "http://localhost/dailyExs/upload/uploadfive.php" );
+        },
+        onInit: function (instance) {
+            console.log("onInit-----------");
+            console.log(this);
+            console.log(arguments);
+            //console.log(instance);
+        },
+        onUploadProgress: function (file, loaded, total, queueLoaded, queueSize) {
+            console.log("onUploadProgress-----------");
+            console.log(this);
+            console.log(arguments);
+            //console.log(arguments);
+        },
+        onQueueComplete: function (queueData) {
+            console.log("onQueueComplete-----------");
+            console.log(this);
+            console.log(arguments);
+            //console.log(queueData);
+        },
+        onUploadSuccess: function (file, data) {
+            console.log("onUploadSuccess-----------");
+            console.log(this);
+            console.log(arguments);
+            //alert(typeof data);
+        },
+        onClearQueue: function (total) {
+            console.log(total);
+        }
+    });
+    </script>
+</body>
+</html>
